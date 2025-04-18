@@ -72,14 +72,17 @@
 
     const checklist = document.getElementById('checklist');
 
+    // Load the state from localStorage
     function loadState() {
       return JSON.parse(localStorage.getItem('checklistState')) || {};
     }
 
+    // Save the state to localStorage
     function saveState(state) {
       localStorage.setItem('checklistState', JSON.stringify(state));
     }
 
+    // Render the checklist items based on the state
     function render() {
       const state = loadState();
       checklist.innerHTML = '';
@@ -124,7 +127,8 @@
             label.classList.remove('checked');
             who.textContent = '';
           }
-          saveState(state);
+
+          saveState(state); // Save the state to localStorage
         });
 
         div.appendChild(img);
@@ -135,6 +139,7 @@
       });
     }
 
+    // Call render when page loads
     render();
   </script>
 </body>
